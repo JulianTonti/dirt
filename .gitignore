@@ -1,3 +1,5 @@
+mount/data/*
+
 # Logs
 logs
 *.log

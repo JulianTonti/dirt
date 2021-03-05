@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+
+  supabase:
+    image: supabase/postgres
+    expose: 
+      - 5432
+    environment:
+      POSTGRES_PASSWORD: $PG_PASS  
+      POSTGRES_USER    : $PG_USER
+      POSTGRES_DB      : $PG_DB
+    volumes:
+      - ./mount/data:/var/lib/postgresql/data
+  
+  dirt:
+    build: 
+      context: .
+      dockerfile: dirt.dockerfile
+    image: "dirt:latest"
+    ports:
+      - $DIRT_PORT:3000
+    volumes:
+      - ./mount/config/index.js:/dirt/config/index.js
+      - ./.env:/dirt/config/.env
+    command: ["npm", "start"]

@@ -1,0 +1,5 @@
+# set values here and rename to .env
+DIRT_PORT=3000
+PG_USER=postgres
+PG_PASS=change_me
+PG_DB=dirt
